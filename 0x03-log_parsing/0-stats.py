@@ -43,7 +43,5 @@ if __name__ == '__main__':
                 print_stats(sorted(results.items()), total_file_size)
                 counter = 0
 
-        print_stats(sorted(results.items()), total_file_size)
-
     finally:
         print_stats(sorted(results.items()), total_file_size)
