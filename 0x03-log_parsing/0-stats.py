@@ -7,9 +7,9 @@ import re
 from typing import Dict
 
 
-pattern = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) -\
-            \[([\d-]+\s[\d:.]+)\] "GET /projects/260 HTTP/1.1"\
-            (?P<status_code>\d{3}) (?P<file_size>\d+)'
+pattern = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - ' +\
+          r'\[([\d-]+\s[\d:.]+)\] "GET /projects/260 HTTP/1.1" ' +\
+          r'(?P<status_code>\d{3}) (?P<file_size>\d+)'
 counter = 0
 results = {}
 total_file_size = 0
