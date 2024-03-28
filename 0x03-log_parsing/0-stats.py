@@ -13,6 +13,7 @@ pattern = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - ' +\
 counter = 0
 results = {}
 total_file_size = 0
+valid_status_codes = [200, 301, 400, 401, 403, 404, 405, 500]
 
 
 def print_stats(stats: Dict[int, str], total_file_size: int) -> None:
@@ -35,7 +36,7 @@ if __name__ == '__main__':
             except ValueError:
                 status_code = ""
 
-            if pattern_match and status_code:
+            if pattern_match and status_code in valid_status_codes:
                 total_file_size += int(pattern_match.group("file_size"))
                 results[status_code] = results.get(status_code, 0) + 1
 
