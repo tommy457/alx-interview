@@ -23,26 +23,27 @@ def print_stats(stats: Dict[int, str], total_file_size: int) -> None:
         print("{}: {}".format(key, value))
 
 
-try:
-    for line in sys.stdin:
-        counter += 1
-        pattern_match = re.match(pattern, line)
-        status_code = pattern_match.group("status_code")
+if __name__ == '__main__':
+    try:
+        for line in sys.stdin:
+            counter += 1
+            pattern_match = re.match(pattern, line)
+            status_code = pattern_match.group("status_code")
 
-        try:
-            status_code = int(status_code)
-        except ValueError:
-            status_code = ""
+            try:
+                status_code = int(status_code)
+            except ValueError:
+                status_code = ""
 
-        if pattern_match and status_code:
-            total_file_size += int(pattern_match.group("file_size"))
-            results[status_code] = results.get(status_code, 0) + 1
+            if pattern_match and status_code:
+                total_file_size += int(pattern_match.group("file_size"))
+                results[status_code] = results.get(status_code, 0) + 1
 
-        if counter == 10:
-            print_stats(sorted(results.items()), total_file_size)
-            counter = 0
+            if counter == 10:
+                print_stats(sorted(results.items()), total_file_size)
+                counter = 0
 
-    print_stats(sorted(results.items()), total_file_size)
+        print_stats(sorted(results.items()), total_file_size)
 
-finally:
-    print_stats(sorted(results.items()), total_file_size)
+    finally:
+        print_stats(sorted(results.items()), total_file_size)
