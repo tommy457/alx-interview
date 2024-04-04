@@ -6,6 +6,8 @@ from typing import List
 
 
 def validUTF8(data: List[int]) -> bool:
+    """ check if data set represents a valid UTF-8 encoding. """
+
     i = 0
     while i < len(data):
         leading_byte = data[i]
