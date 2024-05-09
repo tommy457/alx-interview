@@ -7,14 +7,14 @@ Module for the island_perimeter function.
 def island_perimeter(grid):
     """ Returns the perimeter of the island described in grid """
     perimeter = 0
-    row = len(grid)
-    col = len(grid[0])
+    rows = len(grid)
+    cols = len(grid[0])
 
-    if row == 0 or col == 0:
+    if rows == 0 or cols == 0:
         return 0
 
-    for row in range(row):
-        for col in range(col):
+    for row in range(rows):
+        for col in range(cols):
             if grid[row][col] == 1:
 
                 if row == 0 or grid[row - 1][col] == 0:
